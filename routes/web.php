@@ -59,4 +59,10 @@ Route::get('/error', function () {
     return view('Error.404');
 })->name('User.Error');
 
+Route::get('/student', function () {
+    return view('students.student');
+});
 
+Route::get('/pricing', function () {
+    return view('pricings.pricing');
+});
