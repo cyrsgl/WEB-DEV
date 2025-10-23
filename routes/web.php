@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Phiki\Phast\Root;
+use App\Http\Controllers\StudentController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,10 +61,15 @@ Route::get('/error', function () {
     return view('Error.404');
 })->name('User.Error');
 
-Route::get('/student', function () {
+/*Route::get('/student', function () {
     return view('students.student');
-});
+});*/
 
+Route::get ('/student', [StudentController::class, 'index'])->name('student.index');
+Route::post('/student', [StudentController::class, 'store'])->name('student.submit');
+
+    
 Route::get('/pricing', function () {
     return view('pricings.pricing');
 });
+
