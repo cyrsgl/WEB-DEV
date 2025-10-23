@@ -73,7 +73,7 @@
             <div class="col-md-7">
                 <div class="pricing-section">
                     <div class="text-center mb-4">
-                        <h2 class="fw-bold">Pricing</h2>
+                        <h2 class="fw-bold">YOLO</h2>
                         <p class="text-muted">
                             Lorem ipsum is simply dummy text of the printing and typesetting industry.
                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -141,5 +141,10 @@
             </div>
         </div>
     </div>
+  
+    <!-- FOOTER -->
+    <footer class="text-center py-3 mt-5">  
+        <p class="mb-0">&copy; YOLO ON TOP!</p>
+    </footer>
 
 @ENDSection
