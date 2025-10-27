@@ -1,75 +1,27 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Phiki\Phast\Root;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ErrorControler;
+use App\Http\Controllers\PricingController;
+use App\Http\Controllers\ResponsiveController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'welcome'])->name('home.');
 
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
-Route::group(['prefix' => 'user'],function(){
-    Route::get('/', function(){
-        return view("Users.user");
-    });
+Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard.show');
 
-    Route::get('/{id}', function($id){
-    //return "Your ID is: ". $id;
-    return "<a href = '".route('editUser', $id)."' >Edit</a>";
-    });
+Route::get('/responsive', [ResponsiveController::class, 'show'])->name('responsive.show');
 
-    Route::get('//{id}/{name}', function($id, $name){
-    return "Your ID is: ". $id. " ". $name;
-    });
-
-});
-
-Route::get('/edit/{id}', function($id){
-    //return "Edit your ID is: ". $id;
-    return "<a href = '".route('homePage', $id)."' >Home</a>";
-})->name("editUser");
-
-Route::get('/home/{id}', function($id){
-    return "Welcome ". $id;
-})->name("homePage");
-
-Route::get('/employee', function(){
-    return "<h1>Employee Page</h1>";
-});
-
-Route::fallback(function(){
-    return "Route Not Exist";
-    //return redirect()->route("user");
-});
-
-Route::get('/dashboard', function (){
- return view('dashboard');
-});
-
-
-Route::get('/responsive',function(){
-    return view('sample.responsive');
-});
-
-Route::fallback(function() {
-    return redirect() ->route("User.Error");
-});
-
-Route::get('/error', function () {
-    return view('Error.404');
-})->name('User.Error');
-
-/*Route::get('/student', function () {
-    return view('students.student');
-});*/
 
 Route::get ('/student', [StudentController::class, 'index'])->name('student.index');
 Route::post('/student', [StudentController::class, 'store'])->name('student.submit');
 
-    
-Route::get('/pricing', function () {
-    return view('pricings.pricing');
-});
+Route::get('/pricing', [PricingController::class, 'show'])->name('pricing.show');
 
+Route::fallback([ErrorControler::class, 'notFound']);
