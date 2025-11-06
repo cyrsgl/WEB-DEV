@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ErrorControler;
 use App\Http\Controllers\PricingController;
@@ -25,3 +26,5 @@ Route::post('/student', [StudentController::class, 'store'])->name('student.subm
 Route::get('/pricing', [PricingController::class, 'show'])->name('pricing.show');
 
 Route::fallback([ErrorControler::class, 'notFound']);
+
+Route::resource('/resources',BlogController::class);
