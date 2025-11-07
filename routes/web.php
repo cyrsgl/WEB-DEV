@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ErrorControler;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ResponsiveController;
+use App\Http\Controllers\SingleactionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -28,3 +29,5 @@ Route::get('/pricing', [PricingController::class, 'show'])->name('pricing.show')
 Route::fallback([ErrorControler::class, 'notFound']);
 
 Route::resource('/resources',BlogController::class);
+
+Route::get('singleAction', SingleactionController::class);  
