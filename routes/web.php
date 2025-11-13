@@ -31,3 +31,11 @@ Route::fallback([ErrorControler::class, 'notFound']);
 Route::resource('/resources',BlogController::class);
 
 Route::get('singleAction', SingleactionController::class);  
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+
+Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+
+Route::get('/blog/category/{category}', [BlogController::class, 'filterByCategory'])->name('blog.category');
+
+Route::get('/about', [BlogController::class, 'about'])->name('about');
